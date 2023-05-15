@@ -110,13 +110,14 @@ func (c *Client) fullURL(suffix string, args ...any) string {
 		if strings.Contains(suffix, "/models") {
 			return fmt.Sprintf("%s/%s%s?api-version=%s", baseURL, azureAPIPrefix, suffix, c.config.APIVersion)
 		}
-		azureDeploymentName := "UNKNOWN"
-		if len(args) > 0 {
-			model, ok := args[0].(string)
-			if ok {
-				azureDeploymentName = c.config.GetAzureDeploymentByModel(model)
-			}
-		}
+		// azureDeploymentName := "UNKNOWN"
+		// if len(args) > 0 {
+		// 	model, ok := args[0].(string)
+		// 	if ok {
+		// 		azureDeploymentName = c.config.GetAzureDeploymentByModel(model)
+		// 	}
+		// }
+		azureDeploymentName := "gptUse1_gpt35"
 		return fmt.Sprintf("%s/%s/%s/%s%s?api-version=%s",
 			baseURL, azureAPIPrefix, azureDeploymentsPrefix,
 			azureDeploymentName, suffix, c.config.APIVersion,
